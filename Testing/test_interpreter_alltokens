@@ -1,0 +1,26 @@
+true
+false
+cint
+int
+cboolean
+boolean
+123
+map
+123 lt 321
+321 gt 123
+a := 123
+if
+else
+while
+do
+(
+)
+not
+3 inc 2
+5 dec 3
+not true
+step
+left
+right
+back
+look

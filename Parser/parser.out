@@ -1,0 +1,3070 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> sentence_list
+Rule 2     sentence_list -> sentence_list single_sentence
+Rule 3     sentence_list -> single_sentence
+Rule 4     single_sentence -> declaration NEW_LINE
+Rule 5     single_sentence -> assignment NEW_LINE
+Rule 6     single_sentence -> if NEW_LINE
+Rule 7     single_sentence -> while NEW_LINE
+Rule 8     single_sentence -> proc NEW_LINE
+Rule 9     single_sentence -> proc_call NEW_LINE
+Rule 10    single_sentence -> robot_action NEW_LINE
+Rule 11    single_sentence -> inc NEW_LINE
+Rule 12    single_sentence -> dec NEW_LINE
+Rule 13    single_sentence -> logical NEW_LINE
+Rule 14    declaration -> type VARIABLE EQUAL expression
+Rule 15    declaration -> MAP VARIABLE
+Rule 16    type -> int
+Rule 17    type -> boolean
+Rule 18    int -> INT
+Rule 19    int -> CINT
+Rule 20    boolean -> BOOLEAN
+Rule 21    boolean -> CBOOLEAN
+Rule 22    assignment -> VARIABLE ASSIGN expression
+Rule 23    if -> IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+Rule 24    if -> IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+Rule 25    inc -> INC expression expression
+Rule 26    dec -> DEC expression expression
+Rule 27    while -> WHILE logical NEW_LINE DO single_sentence
+Rule 28    while -> WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+Rule 29    proc -> PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+Rule 30    proc_args -> VARIABLE
+Rule 31    proc_args -> proc_args VARIABLE
+Rule 32    proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+Rule 33    robot_action -> STEP
+Rule 34    robot_action -> BACK
+Rule 35    robot_action -> RIGHT
+Rule 36    robot_action -> LEFT
+Rule 37    robot_action -> LOOK
+Rule 38    map_action -> BAR LEFT_SQUARE_BRACKET VARIABLE VARIABLE VARIABLE VARIABLE RIGHT_SQUARE_BRACKET
+Rule 39    map_action -> EMP LEFT_SQUARE_BRACKET VARIABLE VARIABLE VARIABLE VARIABLE RIGHT_SQUARE_BRACKET
+Rule 40    map_action -> SET LEFT_SQUARE_BRACKET VARIABLE VARIABLE VARIABLE VARIABLE RIGHT_SQUARE_BRACKET
+Rule 41    map_action -> CLR LEFT_SQUARE_BRACKET VARIABLE VARIABLE VARIABLE VARIABLE RIGHT_SQUARE_BRACKET
+Rule 42    expression -> math_expression
+Rule 43    expression -> VARIABLE
+Rule 44    expression -> logical
+Rule 45    expression -> robot_action
+Rule 46    logical -> not
+Rule 47    logical -> or
+Rule 48    logical -> lt
+Rule 49    logical -> gt
+Rule 50    logical -> TRUE
+Rule 51    logical -> FALSE
+Rule 52    not -> NOT logical
+Rule 53    not -> NOT proc_call
+Rule 54    or -> OR or_arg or_arg
+Rule 55    or_arg -> logical
+Rule 56    or_arg -> proc_call
+Rule 57    lt -> LT math_expression math_expression
+Rule 58    gt -> GT math_expression math_expression
+Rule 59    math_expression -> inc
+Rule 60    math_expression -> dec
+Rule 61    math_expression -> INT_DECIMAL
+
+Terminals, with rules where they appear
+
+ASSIGN               : 22
+BACK                 : 34
+BAR                  : 38
+BOOLEAN              : 20
+CBOOLEAN             : 21
+CINT                 : 19
+CLR                  : 41
+DEC                  : 26
+DO                   : 27 28
+ELSE                 : 24
+EMP                  : 39
+EQUAL                : 14
+FALSE                : 51
+GT                   : 58
+IF                   : 23 24
+INC                  : 25
+INT                  : 18
+INT_DECIMAL          : 61
+LEFT                 : 36
+LEFT_BRACKET         : 23 24 24 28 29
+LEFT_SQUARE_BRACKET  : 29 32 38 39 40 41
+LOOK                 : 37
+LT                   : 57
+MAP                  : 15
+NEW_LINE             : 4 5 6 7 8 9 10 11 12 13 23 24 24 27 28 28 29
+NOT                  : 52 53
+OR                   : 54
+PROC                 : 29
+RIGHT                : 35
+RIGHT_BRACKET        : 23 24 24 28 29
+RIGHT_SQUARE_BRACKET : 29 32 38 39 40 41
+SET                  : 40
+STEP                 : 33
+TRUE                 : 50
+VARIABLE             : 14 15 22 29 30 31 32 38 38 38 38 39 39 39 39 40 40 40 40 41 41 41 41 43
+WHILE                : 27 28
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment           : 5
+boolean              : 17
+dec                  : 12 60
+declaration          : 4
+expression           : 14 22 25 25 26 26
+gt                   : 49
+if                   : 6
+inc                  : 11 59
+int                  : 16
+logical              : 13 23 24 27 28 44 52 55
+lt                   : 48
+map_action           : 
+math_expression      : 42 57 57 58 58
+not                  : 46
+or                   : 47
+or_arg               : 54 54
+proc                 : 8
+proc_args            : 29 31 32
+proc_call            : 9 53 56
+program              : 0
+robot_action         : 10 45
+sentence_list        : 1 2 23 24 24 28 29
+single_sentence      : 2 3 27
+type                 : 14
+while                : 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . sentence_list
+    (2) sentence_list -> . sentence_list single_sentence
+    (3) sentence_list -> . single_sentence
+    (4) single_sentence -> . declaration NEW_LINE
+    (5) single_sentence -> . assignment NEW_LINE
+    (6) single_sentence -> . if NEW_LINE
+    (7) single_sentence -> . while NEW_LINE
+    (8) single_sentence -> . proc NEW_LINE
+    (9) single_sentence -> . proc_call NEW_LINE
+    (10) single_sentence -> . robot_action NEW_LINE
+    (11) single_sentence -> . inc NEW_LINE
+    (12) single_sentence -> . dec NEW_LINE
+    (13) single_sentence -> . logical NEW_LINE
+    (14) declaration -> . type VARIABLE EQUAL expression
+    (15) declaration -> . MAP VARIABLE
+    (22) assignment -> . VARIABLE ASSIGN expression
+    (23) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (27) while -> . WHILE logical NEW_LINE DO single_sentence
+    (28) while -> . WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (29) proc -> . PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (16) type -> . int
+    (17) type -> . boolean
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+    (18) int -> . INT
+    (19) int -> . CINT
+    (20) boolean -> . BOOLEAN
+    (21) boolean -> . CBOOLEAN
+
+    MAP             shift and go to state 16
+    VARIABLE        shift and go to state 15
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    PROC            shift and go to state 19
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+    INT             shift and go to state 39
+    CINT            shift and go to state 40
+    BOOLEAN         shift and go to state 41
+    CBOOLEAN        shift and go to state 42
+
+    program                        shift and go to state 1
+    sentence_list                  shift and go to state 2
+    single_sentence                shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    proc                           shift and go to state 8
+    proc_call                      shift and go to state 9
+    robot_action                   shift and go to state 10
+    inc                            shift and go to state 11
+    dec                            shift and go to state 12
+    logical                        shift and go to state 13
+    type                           shift and go to state 14
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+    int                            shift and go to state 33
+    boolean                        shift and go to state 34
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> sentence_list .
+    (2) sentence_list -> sentence_list . single_sentence
+    (4) single_sentence -> . declaration NEW_LINE
+    (5) single_sentence -> . assignment NEW_LINE
+    (6) single_sentence -> . if NEW_LINE
+    (7) single_sentence -> . while NEW_LINE
+    (8) single_sentence -> . proc NEW_LINE
+    (9) single_sentence -> . proc_call NEW_LINE
+    (10) single_sentence -> . robot_action NEW_LINE
+    (11) single_sentence -> . inc NEW_LINE
+    (12) single_sentence -> . dec NEW_LINE
+    (13) single_sentence -> . logical NEW_LINE
+    (14) declaration -> . type VARIABLE EQUAL expression
+    (15) declaration -> . MAP VARIABLE
+    (22) assignment -> . VARIABLE ASSIGN expression
+    (23) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (27) while -> . WHILE logical NEW_LINE DO single_sentence
+    (28) while -> . WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (29) proc -> . PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (16) type -> . int
+    (17) type -> . boolean
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+    (18) int -> . INT
+    (19) int -> . CINT
+    (20) boolean -> . BOOLEAN
+    (21) boolean -> . CBOOLEAN
+
+    $end            reduce using rule 1 (program -> sentence_list .)
+    MAP             shift and go to state 16
+    VARIABLE        shift and go to state 15
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    PROC            shift and go to state 19
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+    INT             shift and go to state 39
+    CINT            shift and go to state 40
+    BOOLEAN         shift and go to state 41
+    CBOOLEAN        shift and go to state 42
+
+    single_sentence                shift and go to state 43
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    proc                           shift and go to state 8
+    proc_call                      shift and go to state 9
+    robot_action                   shift and go to state 10
+    inc                            shift and go to state 11
+    dec                            shift and go to state 12
+    logical                        shift and go to state 13
+    type                           shift and go to state 14
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+    int                            shift and go to state 33
+    boolean                        shift and go to state 34
+
+state 3
+
+    (3) sentence_list -> single_sentence .
+
+    MAP             reduce using rule 3 (sentence_list -> single_sentence .)
+    VARIABLE        reduce using rule 3 (sentence_list -> single_sentence .)
+    IF              reduce using rule 3 (sentence_list -> single_sentence .)
+    WHILE           reduce using rule 3 (sentence_list -> single_sentence .)
+    PROC            reduce using rule 3 (sentence_list -> single_sentence .)
+    STEP            reduce using rule 3 (sentence_list -> single_sentence .)
+    BACK            reduce using rule 3 (sentence_list -> single_sentence .)
+    RIGHT           reduce using rule 3 (sentence_list -> single_sentence .)
+    LEFT            reduce using rule 3 (sentence_list -> single_sentence .)
+    LOOK            reduce using rule 3 (sentence_list -> single_sentence .)
+    INC             reduce using rule 3 (sentence_list -> single_sentence .)
+    DEC             reduce using rule 3 (sentence_list -> single_sentence .)
+    TRUE            reduce using rule 3 (sentence_list -> single_sentence .)
+    FALSE           reduce using rule 3 (sentence_list -> single_sentence .)
+    NOT             reduce using rule 3 (sentence_list -> single_sentence .)
+    OR              reduce using rule 3 (sentence_list -> single_sentence .)
+    LT              reduce using rule 3 (sentence_list -> single_sentence .)
+    GT              reduce using rule 3 (sentence_list -> single_sentence .)
+    INT             reduce using rule 3 (sentence_list -> single_sentence .)
+    CINT            reduce using rule 3 (sentence_list -> single_sentence .)
+    BOOLEAN         reduce using rule 3 (sentence_list -> single_sentence .)
+    CBOOLEAN        reduce using rule 3 (sentence_list -> single_sentence .)
+    $end            reduce using rule 3 (sentence_list -> single_sentence .)
+    RIGHT_BRACKET   reduce using rule 3 (sentence_list -> single_sentence .)
+
+
+state 4
+
+    (4) single_sentence -> declaration . NEW_LINE
+
+    NEW_LINE        shift and go to state 44
+
+
+state 5
+
+    (5) single_sentence -> assignment . NEW_LINE
+
+    NEW_LINE        shift and go to state 45
+
+
+state 6
+
+    (6) single_sentence -> if . NEW_LINE
+
+    NEW_LINE        shift and go to state 46
+
+
+state 7
+
+    (7) single_sentence -> while . NEW_LINE
+
+    NEW_LINE        shift and go to state 47
+
+
+state 8
+
+    (8) single_sentence -> proc . NEW_LINE
+
+    NEW_LINE        shift and go to state 48
+
+
+state 9
+
+    (9) single_sentence -> proc_call . NEW_LINE
+
+    NEW_LINE        shift and go to state 49
+
+
+state 10
+
+    (10) single_sentence -> robot_action . NEW_LINE
+
+    NEW_LINE        shift and go to state 50
+
+
+state 11
+
+    (11) single_sentence -> inc . NEW_LINE
+
+    NEW_LINE        shift and go to state 51
+
+
+state 12
+
+    (12) single_sentence -> dec . NEW_LINE
+
+    NEW_LINE        shift and go to state 52
+
+
+state 13
+
+    (13) single_sentence -> logical . NEW_LINE
+
+    NEW_LINE        shift and go to state 53
+
+
+state 14
+
+    (14) declaration -> type . VARIABLE EQUAL expression
+
+    VARIABLE        shift and go to state 54
+
+
+state 15
+
+    (22) assignment -> VARIABLE . ASSIGN expression
+    (32) proc_call -> VARIABLE . LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+
+    ASSIGN          shift and go to state 55
+    LEFT_SQUARE_BRACKET shift and go to state 56
+
+
+state 16
+
+    (15) declaration -> MAP . VARIABLE
+
+    VARIABLE        shift and go to state 57
+
+
+state 17
+
+    (23) if -> IF . logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> IF . logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+
+    logical                        shift and go to state 58
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+
+state 18
+
+    (27) while -> WHILE . logical NEW_LINE DO single_sentence
+    (28) while -> WHILE . logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+
+    logical                        shift and go to state 59
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+
+state 19
+
+    (29) proc -> PROC . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+
+    VARIABLE        shift and go to state 60
+
+
+state 20
+
+    (33) robot_action -> STEP .
+
+    NEW_LINE        reduce using rule 33 (robot_action -> STEP .)
+    VARIABLE        reduce using rule 33 (robot_action -> STEP .)
+    INT_DECIMAL     reduce using rule 33 (robot_action -> STEP .)
+    TRUE            reduce using rule 33 (robot_action -> STEP .)
+    FALSE           reduce using rule 33 (robot_action -> STEP .)
+    STEP            reduce using rule 33 (robot_action -> STEP .)
+    BACK            reduce using rule 33 (robot_action -> STEP .)
+    RIGHT           reduce using rule 33 (robot_action -> STEP .)
+    LEFT            reduce using rule 33 (robot_action -> STEP .)
+    LOOK            reduce using rule 33 (robot_action -> STEP .)
+    INC             reduce using rule 33 (robot_action -> STEP .)
+    DEC             reduce using rule 33 (robot_action -> STEP .)
+    NOT             reduce using rule 33 (robot_action -> STEP .)
+    OR              reduce using rule 33 (robot_action -> STEP .)
+    LT              reduce using rule 33 (robot_action -> STEP .)
+    GT              reduce using rule 33 (robot_action -> STEP .)
+    LEFT_BRACKET    reduce using rule 33 (robot_action -> STEP .)
+
+
+state 21
+
+    (34) robot_action -> BACK .
+
+    NEW_LINE        reduce using rule 34 (robot_action -> BACK .)
+    VARIABLE        reduce using rule 34 (robot_action -> BACK .)
+    INT_DECIMAL     reduce using rule 34 (robot_action -> BACK .)
+    TRUE            reduce using rule 34 (robot_action -> BACK .)
+    FALSE           reduce using rule 34 (robot_action -> BACK .)
+    STEP            reduce using rule 34 (robot_action -> BACK .)
+    BACK            reduce using rule 34 (robot_action -> BACK .)
+    RIGHT           reduce using rule 34 (robot_action -> BACK .)
+    LEFT            reduce using rule 34 (robot_action -> BACK .)
+    LOOK            reduce using rule 34 (robot_action -> BACK .)
+    INC             reduce using rule 34 (robot_action -> BACK .)
+    DEC             reduce using rule 34 (robot_action -> BACK .)
+    NOT             reduce using rule 34 (robot_action -> BACK .)
+    OR              reduce using rule 34 (robot_action -> BACK .)
+    LT              reduce using rule 34 (robot_action -> BACK .)
+    GT              reduce using rule 34 (robot_action -> BACK .)
+    LEFT_BRACKET    reduce using rule 34 (robot_action -> BACK .)
+
+
+state 22
+
+    (35) robot_action -> RIGHT .
+
+    NEW_LINE        reduce using rule 35 (robot_action -> RIGHT .)
+    VARIABLE        reduce using rule 35 (robot_action -> RIGHT .)
+    INT_DECIMAL     reduce using rule 35 (robot_action -> RIGHT .)
+    TRUE            reduce using rule 35 (robot_action -> RIGHT .)
+    FALSE           reduce using rule 35 (robot_action -> RIGHT .)
+    STEP            reduce using rule 35 (robot_action -> RIGHT .)
+    BACK            reduce using rule 35 (robot_action -> RIGHT .)
+    RIGHT           reduce using rule 35 (robot_action -> RIGHT .)
+    LEFT            reduce using rule 35 (robot_action -> RIGHT .)
+    LOOK            reduce using rule 35 (robot_action -> RIGHT .)
+    INC             reduce using rule 35 (robot_action -> RIGHT .)
+    DEC             reduce using rule 35 (robot_action -> RIGHT .)
+    NOT             reduce using rule 35 (robot_action -> RIGHT .)
+    OR              reduce using rule 35 (robot_action -> RIGHT .)
+    LT              reduce using rule 35 (robot_action -> RIGHT .)
+    GT              reduce using rule 35 (robot_action -> RIGHT .)
+    LEFT_BRACKET    reduce using rule 35 (robot_action -> RIGHT .)
+
+
+state 23
+
+    (36) robot_action -> LEFT .
+
+    NEW_LINE        reduce using rule 36 (robot_action -> LEFT .)
+    VARIABLE        reduce using rule 36 (robot_action -> LEFT .)
+    INT_DECIMAL     reduce using rule 36 (robot_action -> LEFT .)
+    TRUE            reduce using rule 36 (robot_action -> LEFT .)
+    FALSE           reduce using rule 36 (robot_action -> LEFT .)
+    STEP            reduce using rule 36 (robot_action -> LEFT .)
+    BACK            reduce using rule 36 (robot_action -> LEFT .)
+    RIGHT           reduce using rule 36 (robot_action -> LEFT .)
+    LEFT            reduce using rule 36 (robot_action -> LEFT .)
+    LOOK            reduce using rule 36 (robot_action -> LEFT .)
+    INC             reduce using rule 36 (robot_action -> LEFT .)
+    DEC             reduce using rule 36 (robot_action -> LEFT .)
+    NOT             reduce using rule 36 (robot_action -> LEFT .)
+    OR              reduce using rule 36 (robot_action -> LEFT .)
+    LT              reduce using rule 36 (robot_action -> LEFT .)
+    GT              reduce using rule 36 (robot_action -> LEFT .)
+    LEFT_BRACKET    reduce using rule 36 (robot_action -> LEFT .)
+
+
+state 24
+
+    (37) robot_action -> LOOK .
+
+    NEW_LINE        reduce using rule 37 (robot_action -> LOOK .)
+    VARIABLE        reduce using rule 37 (robot_action -> LOOK .)
+    INT_DECIMAL     reduce using rule 37 (robot_action -> LOOK .)
+    TRUE            reduce using rule 37 (robot_action -> LOOK .)
+    FALSE           reduce using rule 37 (robot_action -> LOOK .)
+    STEP            reduce using rule 37 (robot_action -> LOOK .)
+    BACK            reduce using rule 37 (robot_action -> LOOK .)
+    RIGHT           reduce using rule 37 (robot_action -> LOOK .)
+    LEFT            reduce using rule 37 (robot_action -> LOOK .)
+    LOOK            reduce using rule 37 (robot_action -> LOOK .)
+    INC             reduce using rule 37 (robot_action -> LOOK .)
+    DEC             reduce using rule 37 (robot_action -> LOOK .)
+    NOT             reduce using rule 37 (robot_action -> LOOK .)
+    OR              reduce using rule 37 (robot_action -> LOOK .)
+    LT              reduce using rule 37 (robot_action -> LOOK .)
+    GT              reduce using rule 37 (robot_action -> LOOK .)
+    LEFT_BRACKET    reduce using rule 37 (robot_action -> LOOK .)
+
+
+state 25
+
+    (25) inc -> INC . expression expression
+    (42) expression -> . math_expression
+    (43) expression -> . VARIABLE
+    (44) expression -> . logical
+    (45) expression -> . robot_action
+    (59) math_expression -> . inc
+    (60) math_expression -> . dec
+    (61) math_expression -> . INT_DECIMAL
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+
+    VARIABLE        shift and go to state 63
+    INT_DECIMAL     shift and go to state 68
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+
+    expression                     shift and go to state 61
+    math_expression                shift and go to state 62
+    logical                        shift and go to state 64
+    robot_action                   shift and go to state 65
+    inc                            shift and go to state 66
+    dec                            shift and go to state 67
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+
+state 26
+
+    (26) dec -> DEC . expression expression
+    (42) expression -> . math_expression
+    (43) expression -> . VARIABLE
+    (44) expression -> . logical
+    (45) expression -> . robot_action
+    (59) math_expression -> . inc
+    (60) math_expression -> . dec
+    (61) math_expression -> . INT_DECIMAL
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+
+    VARIABLE        shift and go to state 63
+    INT_DECIMAL     shift and go to state 68
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+
+    expression                     shift and go to state 69
+    math_expression                shift and go to state 62
+    logical                        shift and go to state 64
+    robot_action                   shift and go to state 65
+    inc                            shift and go to state 66
+    dec                            shift and go to state 67
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+
+state 27
+
+    (46) logical -> not .
+
+    NEW_LINE        reduce using rule 46 (logical -> not .)
+    LEFT_BRACKET    reduce using rule 46 (logical -> not .)
+    VARIABLE        reduce using rule 46 (logical -> not .)
+    INT_DECIMAL     reduce using rule 46 (logical -> not .)
+    TRUE            reduce using rule 46 (logical -> not .)
+    FALSE           reduce using rule 46 (logical -> not .)
+    STEP            reduce using rule 46 (logical -> not .)
+    BACK            reduce using rule 46 (logical -> not .)
+    RIGHT           reduce using rule 46 (logical -> not .)
+    LEFT            reduce using rule 46 (logical -> not .)
+    LOOK            reduce using rule 46 (logical -> not .)
+    INC             reduce using rule 46 (logical -> not .)
+    DEC             reduce using rule 46 (logical -> not .)
+    NOT             reduce using rule 46 (logical -> not .)
+    OR              reduce using rule 46 (logical -> not .)
+    LT              reduce using rule 46 (logical -> not .)
+    GT              reduce using rule 46 (logical -> not .)
+
+
+state 28
+
+    (47) logical -> or .
+
+    NEW_LINE        reduce using rule 47 (logical -> or .)
+    LEFT_BRACKET    reduce using rule 47 (logical -> or .)
+    VARIABLE        reduce using rule 47 (logical -> or .)
+    INT_DECIMAL     reduce using rule 47 (logical -> or .)
+    TRUE            reduce using rule 47 (logical -> or .)
+    FALSE           reduce using rule 47 (logical -> or .)
+    STEP            reduce using rule 47 (logical -> or .)
+    BACK            reduce using rule 47 (logical -> or .)
+    RIGHT           reduce using rule 47 (logical -> or .)
+    LEFT            reduce using rule 47 (logical -> or .)
+    LOOK            reduce using rule 47 (logical -> or .)
+    INC             reduce using rule 47 (logical -> or .)
+    DEC             reduce using rule 47 (logical -> or .)
+    NOT             reduce using rule 47 (logical -> or .)
+    OR              reduce using rule 47 (logical -> or .)
+    LT              reduce using rule 47 (logical -> or .)
+    GT              reduce using rule 47 (logical -> or .)
+
+
+state 29
+
+    (48) logical -> lt .
+
+    NEW_LINE        reduce using rule 48 (logical -> lt .)
+    LEFT_BRACKET    reduce using rule 48 (logical -> lt .)
+    VARIABLE        reduce using rule 48 (logical -> lt .)
+    INT_DECIMAL     reduce using rule 48 (logical -> lt .)
+    TRUE            reduce using rule 48 (logical -> lt .)
+    FALSE           reduce using rule 48 (logical -> lt .)
+    STEP            reduce using rule 48 (logical -> lt .)
+    BACK            reduce using rule 48 (logical -> lt .)
+    RIGHT           reduce using rule 48 (logical -> lt .)
+    LEFT            reduce using rule 48 (logical -> lt .)
+    LOOK            reduce using rule 48 (logical -> lt .)
+    INC             reduce using rule 48 (logical -> lt .)
+    DEC             reduce using rule 48 (logical -> lt .)
+    NOT             reduce using rule 48 (logical -> lt .)
+    OR              reduce using rule 48 (logical -> lt .)
+    LT              reduce using rule 48 (logical -> lt .)
+    GT              reduce using rule 48 (logical -> lt .)
+
+
+state 30
+
+    (49) logical -> gt .
+
+    NEW_LINE        reduce using rule 49 (logical -> gt .)
+    LEFT_BRACKET    reduce using rule 49 (logical -> gt .)
+    VARIABLE        reduce using rule 49 (logical -> gt .)
+    INT_DECIMAL     reduce using rule 49 (logical -> gt .)
+    TRUE            reduce using rule 49 (logical -> gt .)
+    FALSE           reduce using rule 49 (logical -> gt .)
+    STEP            reduce using rule 49 (logical -> gt .)
+    BACK            reduce using rule 49 (logical -> gt .)
+    RIGHT           reduce using rule 49 (logical -> gt .)
+    LEFT            reduce using rule 49 (logical -> gt .)
+    LOOK            reduce using rule 49 (logical -> gt .)
+    INC             reduce using rule 49 (logical -> gt .)
+    DEC             reduce using rule 49 (logical -> gt .)
+    NOT             reduce using rule 49 (logical -> gt .)
+    OR              reduce using rule 49 (logical -> gt .)
+    LT              reduce using rule 49 (logical -> gt .)
+    GT              reduce using rule 49 (logical -> gt .)
+
+
+state 31
+
+    (50) logical -> TRUE .
+
+    NEW_LINE        reduce using rule 50 (logical -> TRUE .)
+    LEFT_BRACKET    reduce using rule 50 (logical -> TRUE .)
+    VARIABLE        reduce using rule 50 (logical -> TRUE .)
+    INT_DECIMAL     reduce using rule 50 (logical -> TRUE .)
+    TRUE            reduce using rule 50 (logical -> TRUE .)
+    FALSE           reduce using rule 50 (logical -> TRUE .)
+    STEP            reduce using rule 50 (logical -> TRUE .)
+    BACK            reduce using rule 50 (logical -> TRUE .)
+    RIGHT           reduce using rule 50 (logical -> TRUE .)
+    LEFT            reduce using rule 50 (logical -> TRUE .)
+    LOOK            reduce using rule 50 (logical -> TRUE .)
+    INC             reduce using rule 50 (logical -> TRUE .)
+    DEC             reduce using rule 50 (logical -> TRUE .)
+    NOT             reduce using rule 50 (logical -> TRUE .)
+    OR              reduce using rule 50 (logical -> TRUE .)
+    LT              reduce using rule 50 (logical -> TRUE .)
+    GT              reduce using rule 50 (logical -> TRUE .)
+
+
+state 32
+
+    (51) logical -> FALSE .
+
+    NEW_LINE        reduce using rule 51 (logical -> FALSE .)
+    LEFT_BRACKET    reduce using rule 51 (logical -> FALSE .)
+    VARIABLE        reduce using rule 51 (logical -> FALSE .)
+    INT_DECIMAL     reduce using rule 51 (logical -> FALSE .)
+    TRUE            reduce using rule 51 (logical -> FALSE .)
+    FALSE           reduce using rule 51 (logical -> FALSE .)
+    STEP            reduce using rule 51 (logical -> FALSE .)
+    BACK            reduce using rule 51 (logical -> FALSE .)
+    RIGHT           reduce using rule 51 (logical -> FALSE .)
+    LEFT            reduce using rule 51 (logical -> FALSE .)
+    LOOK            reduce using rule 51 (logical -> FALSE .)
+    INC             reduce using rule 51 (logical -> FALSE .)
+    DEC             reduce using rule 51 (logical -> FALSE .)
+    NOT             reduce using rule 51 (logical -> FALSE .)
+    OR              reduce using rule 51 (logical -> FALSE .)
+    LT              reduce using rule 51 (logical -> FALSE .)
+    GT              reduce using rule 51 (logical -> FALSE .)
+
+
+state 33
+
+    (16) type -> int .
+
+    VARIABLE        reduce using rule 16 (type -> int .)
+
+
+state 34
+
+    (17) type -> boolean .
+
+    VARIABLE        reduce using rule 17 (type -> boolean .)
+
+
+state 35
+
+    (52) not -> NOT . logical
+    (53) not -> NOT . proc_call
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    VARIABLE        shift and go to state 72
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+
+    logical                        shift and go to state 70
+    proc_call                      shift and go to state 71
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+
+state 36
+
+    (54) or -> OR . or_arg or_arg
+    (55) or_arg -> . logical
+    (56) or_arg -> . proc_call
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    VARIABLE        shift and go to state 72
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+
+    or_arg                         shift and go to state 73
+    logical                        shift and go to state 74
+    proc_call                      shift and go to state 75
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+
+state 37
+
+    (57) lt -> LT . math_expression math_expression
+    (59) math_expression -> . inc
+    (60) math_expression -> . dec
+    (61) math_expression -> . INT_DECIMAL
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+
+    INT_DECIMAL     shift and go to state 68
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+
+    math_expression                shift and go to state 76
+    inc                            shift and go to state 66
+    dec                            shift and go to state 67
+
+state 38
+
+    (58) gt -> GT . math_expression math_expression
+    (59) math_expression -> . inc
+    (60) math_expression -> . dec
+    (61) math_expression -> . INT_DECIMAL
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+
+    INT_DECIMAL     shift and go to state 68
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+
+    math_expression                shift and go to state 77
+    inc                            shift and go to state 66
+    dec                            shift and go to state 67
+
+state 39
+
+    (18) int -> INT .
+
+    VARIABLE        reduce using rule 18 (int -> INT .)
+
+
+state 40
+
+    (19) int -> CINT .
+
+    VARIABLE        reduce using rule 19 (int -> CINT .)
+
+
+state 41
+
+    (20) boolean -> BOOLEAN .
+
+    VARIABLE        reduce using rule 20 (boolean -> BOOLEAN .)
+
+
+state 42
+
+    (21) boolean -> CBOOLEAN .
+
+    VARIABLE        reduce using rule 21 (boolean -> CBOOLEAN .)
+
+
+state 43
+
+    (2) sentence_list -> sentence_list single_sentence .
+
+    MAP             reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    VARIABLE        reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    IF              reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    WHILE           reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    PROC            reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    STEP            reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    BACK            reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    RIGHT           reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    LEFT            reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    LOOK            reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    INC             reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    DEC             reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    TRUE            reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    FALSE           reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    NOT             reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    OR              reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    LT              reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    GT              reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    INT             reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    CINT            reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    BOOLEAN         reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    CBOOLEAN        reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    $end            reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+    RIGHT_BRACKET   reduce using rule 2 (sentence_list -> sentence_list single_sentence .)
+
+
+state 44
+
+    (4) single_sentence -> declaration NEW_LINE .
+
+    MAP             reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    VARIABLE        reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    IF              reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    WHILE           reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    PROC            reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    STEP            reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    BACK            reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    RIGHT           reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    LEFT            reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    LOOK            reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    INC             reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    DEC             reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    TRUE            reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    FALSE           reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    NOT             reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    OR              reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    LT              reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    GT              reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    INT             reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    CINT            reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    BOOLEAN         reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    CBOOLEAN        reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    $end            reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    RIGHT_BRACKET   reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+    NEW_LINE        reduce using rule 4 (single_sentence -> declaration NEW_LINE .)
+
+
+state 45
+
+    (5) single_sentence -> assignment NEW_LINE .
+
+    MAP             reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    VARIABLE        reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    IF              reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    WHILE           reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    PROC            reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    STEP            reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    BACK            reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    RIGHT           reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    LEFT            reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    LOOK            reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    INC             reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    DEC             reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    TRUE            reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    FALSE           reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    NOT             reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    OR              reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    LT              reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    GT              reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    INT             reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    CINT            reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    BOOLEAN         reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    CBOOLEAN        reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    $end            reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    RIGHT_BRACKET   reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+    NEW_LINE        reduce using rule 5 (single_sentence -> assignment NEW_LINE .)
+
+
+state 46
+
+    (6) single_sentence -> if NEW_LINE .
+
+    MAP             reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    VARIABLE        reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    IF              reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    WHILE           reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    PROC            reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    STEP            reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    BACK            reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    RIGHT           reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    LEFT            reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    LOOK            reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    INC             reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    DEC             reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    TRUE            reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    FALSE           reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    NOT             reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    OR              reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    LT              reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    GT              reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    INT             reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    CINT            reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    BOOLEAN         reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    CBOOLEAN        reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    $end            reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    RIGHT_BRACKET   reduce using rule 6 (single_sentence -> if NEW_LINE .)
+    NEW_LINE        reduce using rule 6 (single_sentence -> if NEW_LINE .)
+
+
+state 47
+
+    (7) single_sentence -> while NEW_LINE .
+
+    MAP             reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    VARIABLE        reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    IF              reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    WHILE           reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    PROC            reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    STEP            reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    BACK            reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    RIGHT           reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    LEFT            reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    LOOK            reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    INC             reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    DEC             reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    TRUE            reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    FALSE           reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    NOT             reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    OR              reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    LT              reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    GT              reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    INT             reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    CINT            reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    BOOLEAN         reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    CBOOLEAN        reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    $end            reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    RIGHT_BRACKET   reduce using rule 7 (single_sentence -> while NEW_LINE .)
+    NEW_LINE        reduce using rule 7 (single_sentence -> while NEW_LINE .)
+
+
+state 48
+
+    (8) single_sentence -> proc NEW_LINE .
+
+    MAP             reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    VARIABLE        reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    IF              reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    WHILE           reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    PROC            reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    STEP            reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    BACK            reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    RIGHT           reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    LEFT            reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    LOOK            reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    INC             reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    DEC             reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    TRUE            reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    FALSE           reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    NOT             reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    OR              reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    LT              reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    GT              reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    INT             reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    CINT            reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    BOOLEAN         reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    CBOOLEAN        reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    $end            reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    RIGHT_BRACKET   reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+    NEW_LINE        reduce using rule 8 (single_sentence -> proc NEW_LINE .)
+
+
+state 49
+
+    (9) single_sentence -> proc_call NEW_LINE .
+
+    MAP             reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    VARIABLE        reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    IF              reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    WHILE           reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    PROC            reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    STEP            reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    BACK            reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    RIGHT           reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    LEFT            reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    LOOK            reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    INC             reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    DEC             reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    TRUE            reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    FALSE           reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    NOT             reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    OR              reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    LT              reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    GT              reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    INT             reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    CINT            reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    BOOLEAN         reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    CBOOLEAN        reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    $end            reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    RIGHT_BRACKET   reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+    NEW_LINE        reduce using rule 9 (single_sentence -> proc_call NEW_LINE .)
+
+
+state 50
+
+    (10) single_sentence -> robot_action NEW_LINE .
+
+    MAP             reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    VARIABLE        reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    IF              reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    WHILE           reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    PROC            reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    STEP            reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    BACK            reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    RIGHT           reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    LEFT            reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    LOOK            reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    INC             reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    DEC             reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    TRUE            reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    FALSE           reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    NOT             reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    OR              reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    LT              reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    GT              reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    INT             reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    CINT            reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    BOOLEAN         reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    CBOOLEAN        reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    $end            reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    RIGHT_BRACKET   reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+    NEW_LINE        reduce using rule 10 (single_sentence -> robot_action NEW_LINE .)
+
+
+state 51
+
+    (11) single_sentence -> inc NEW_LINE .
+
+    MAP             reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    VARIABLE        reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    IF              reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    WHILE           reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    PROC            reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    STEP            reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    BACK            reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    RIGHT           reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    LEFT            reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    LOOK            reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    INC             reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    DEC             reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    TRUE            reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    FALSE           reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    NOT             reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    OR              reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    LT              reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    GT              reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    INT             reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    CINT            reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    BOOLEAN         reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    CBOOLEAN        reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    $end            reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    RIGHT_BRACKET   reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+    NEW_LINE        reduce using rule 11 (single_sentence -> inc NEW_LINE .)
+
+
+state 52
+
+    (12) single_sentence -> dec NEW_LINE .
+
+    MAP             reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    VARIABLE        reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    IF              reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    WHILE           reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    PROC            reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    STEP            reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    BACK            reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    RIGHT           reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    LEFT            reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    LOOK            reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    INC             reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    DEC             reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    TRUE            reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    FALSE           reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    NOT             reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    OR              reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    LT              reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    GT              reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    INT             reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    CINT            reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    BOOLEAN         reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    CBOOLEAN        reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    $end            reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    RIGHT_BRACKET   reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+    NEW_LINE        reduce using rule 12 (single_sentence -> dec NEW_LINE .)
+
+
+state 53
+
+    (13) single_sentence -> logical NEW_LINE .
+
+    MAP             reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    VARIABLE        reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    IF              reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    WHILE           reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    PROC            reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    STEP            reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    BACK            reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    RIGHT           reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    LEFT            reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    LOOK            reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    INC             reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    DEC             reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    TRUE            reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    FALSE           reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    NOT             reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    OR              reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    LT              reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    GT              reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    INT             reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    CINT            reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    BOOLEAN         reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    CBOOLEAN        reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    $end            reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    RIGHT_BRACKET   reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+    NEW_LINE        reduce using rule 13 (single_sentence -> logical NEW_LINE .)
+
+
+state 54
+
+    (14) declaration -> type VARIABLE . EQUAL expression
+
+    EQUAL           shift and go to state 78
+
+
+state 55
+
+    (22) assignment -> VARIABLE ASSIGN . expression
+    (42) expression -> . math_expression
+    (43) expression -> . VARIABLE
+    (44) expression -> . logical
+    (45) expression -> . robot_action
+    (59) math_expression -> . inc
+    (60) math_expression -> . dec
+    (61) math_expression -> . INT_DECIMAL
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+
+    VARIABLE        shift and go to state 63
+    INT_DECIMAL     shift and go to state 68
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+
+    expression                     shift and go to state 79
+    math_expression                shift and go to state 62
+    logical                        shift and go to state 64
+    robot_action                   shift and go to state 65
+    inc                            shift and go to state 66
+    dec                            shift and go to state 67
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+
+state 56
+
+    (32) proc_call -> VARIABLE LEFT_SQUARE_BRACKET . proc_args RIGHT_SQUARE_BRACKET
+    (30) proc_args -> . VARIABLE
+    (31) proc_args -> . proc_args VARIABLE
+
+    VARIABLE        shift and go to state 80
+
+    proc_args                      shift and go to state 81
+
+state 57
+
+    (15) declaration -> MAP VARIABLE .
+
+    NEW_LINE        reduce using rule 15 (declaration -> MAP VARIABLE .)
+
+
+state 58
+
+    (23) if -> IF logical . LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> IF logical . LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+
+    LEFT_BRACKET    shift and go to state 82
+
+
+state 59
+
+    (27) while -> WHILE logical . NEW_LINE DO single_sentence
+    (28) while -> WHILE logical . NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+
+    NEW_LINE        shift and go to state 83
+
+
+state 60
+
+    (29) proc -> PROC VARIABLE . LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+
+    LEFT_SQUARE_BRACKET shift and go to state 84
+
+
+state 61
+
+    (25) inc -> INC expression . expression
+    (42) expression -> . math_expression
+    (43) expression -> . VARIABLE
+    (44) expression -> . logical
+    (45) expression -> . robot_action
+    (59) math_expression -> . inc
+    (60) math_expression -> . dec
+    (61) math_expression -> . INT_DECIMAL
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+
+    VARIABLE        shift and go to state 63
+    INT_DECIMAL     shift and go to state 68
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+
+    expression                     shift and go to state 85
+    math_expression                shift and go to state 62
+    logical                        shift and go to state 64
+    robot_action                   shift and go to state 65
+    inc                            shift and go to state 66
+    dec                            shift and go to state 67
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+
+state 62
+
+    (42) expression -> math_expression .
+
+    VARIABLE        reduce using rule 42 (expression -> math_expression .)
+    INT_DECIMAL     reduce using rule 42 (expression -> math_expression .)
+    TRUE            reduce using rule 42 (expression -> math_expression .)
+    FALSE           reduce using rule 42 (expression -> math_expression .)
+    STEP            reduce using rule 42 (expression -> math_expression .)
+    BACK            reduce using rule 42 (expression -> math_expression .)
+    RIGHT           reduce using rule 42 (expression -> math_expression .)
+    LEFT            reduce using rule 42 (expression -> math_expression .)
+    LOOK            reduce using rule 42 (expression -> math_expression .)
+    INC             reduce using rule 42 (expression -> math_expression .)
+    DEC             reduce using rule 42 (expression -> math_expression .)
+    NOT             reduce using rule 42 (expression -> math_expression .)
+    OR              reduce using rule 42 (expression -> math_expression .)
+    LT              reduce using rule 42 (expression -> math_expression .)
+    GT              reduce using rule 42 (expression -> math_expression .)
+    NEW_LINE        reduce using rule 42 (expression -> math_expression .)
+    LEFT_BRACKET    reduce using rule 42 (expression -> math_expression .)
+
+
+state 63
+
+    (43) expression -> VARIABLE .
+
+    VARIABLE        reduce using rule 43 (expression -> VARIABLE .)
+    INT_DECIMAL     reduce using rule 43 (expression -> VARIABLE .)
+    TRUE            reduce using rule 43 (expression -> VARIABLE .)
+    FALSE           reduce using rule 43 (expression -> VARIABLE .)
+    STEP            reduce using rule 43 (expression -> VARIABLE .)
+    BACK            reduce using rule 43 (expression -> VARIABLE .)
+    RIGHT           reduce using rule 43 (expression -> VARIABLE .)
+    LEFT            reduce using rule 43 (expression -> VARIABLE .)
+    LOOK            reduce using rule 43 (expression -> VARIABLE .)
+    INC             reduce using rule 43 (expression -> VARIABLE .)
+    DEC             reduce using rule 43 (expression -> VARIABLE .)
+    NOT             reduce using rule 43 (expression -> VARIABLE .)
+    OR              reduce using rule 43 (expression -> VARIABLE .)
+    LT              reduce using rule 43 (expression -> VARIABLE .)
+    GT              reduce using rule 43 (expression -> VARIABLE .)
+    NEW_LINE        reduce using rule 43 (expression -> VARIABLE .)
+    LEFT_BRACKET    reduce using rule 43 (expression -> VARIABLE .)
+
+
+state 64
+
+    (44) expression -> logical .
+
+    VARIABLE        reduce using rule 44 (expression -> logical .)
+    INT_DECIMAL     reduce using rule 44 (expression -> logical .)
+    TRUE            reduce using rule 44 (expression -> logical .)
+    FALSE           reduce using rule 44 (expression -> logical .)
+    STEP            reduce using rule 44 (expression -> logical .)
+    BACK            reduce using rule 44 (expression -> logical .)
+    RIGHT           reduce using rule 44 (expression -> logical .)
+    LEFT            reduce using rule 44 (expression -> logical .)
+    LOOK            reduce using rule 44 (expression -> logical .)
+    INC             reduce using rule 44 (expression -> logical .)
+    DEC             reduce using rule 44 (expression -> logical .)
+    NOT             reduce using rule 44 (expression -> logical .)
+    OR              reduce using rule 44 (expression -> logical .)
+    LT              reduce using rule 44 (expression -> logical .)
+    GT              reduce using rule 44 (expression -> logical .)
+    NEW_LINE        reduce using rule 44 (expression -> logical .)
+    LEFT_BRACKET    reduce using rule 44 (expression -> logical .)
+
+
+state 65
+
+    (45) expression -> robot_action .
+
+    VARIABLE        reduce using rule 45 (expression -> robot_action .)
+    INT_DECIMAL     reduce using rule 45 (expression -> robot_action .)
+    TRUE            reduce using rule 45 (expression -> robot_action .)
+    FALSE           reduce using rule 45 (expression -> robot_action .)
+    STEP            reduce using rule 45 (expression -> robot_action .)
+    BACK            reduce using rule 45 (expression -> robot_action .)
+    RIGHT           reduce using rule 45 (expression -> robot_action .)
+    LEFT            reduce using rule 45 (expression -> robot_action .)
+    LOOK            reduce using rule 45 (expression -> robot_action .)
+    INC             reduce using rule 45 (expression -> robot_action .)
+    DEC             reduce using rule 45 (expression -> robot_action .)
+    NOT             reduce using rule 45 (expression -> robot_action .)
+    OR              reduce using rule 45 (expression -> robot_action .)
+    LT              reduce using rule 45 (expression -> robot_action .)
+    GT              reduce using rule 45 (expression -> robot_action .)
+    NEW_LINE        reduce using rule 45 (expression -> robot_action .)
+    LEFT_BRACKET    reduce using rule 45 (expression -> robot_action .)
+
+
+state 66
+
+    (59) math_expression -> inc .
+
+    VARIABLE        reduce using rule 59 (math_expression -> inc .)
+    INT_DECIMAL     reduce using rule 59 (math_expression -> inc .)
+    TRUE            reduce using rule 59 (math_expression -> inc .)
+    FALSE           reduce using rule 59 (math_expression -> inc .)
+    STEP            reduce using rule 59 (math_expression -> inc .)
+    BACK            reduce using rule 59 (math_expression -> inc .)
+    RIGHT           reduce using rule 59 (math_expression -> inc .)
+    LEFT            reduce using rule 59 (math_expression -> inc .)
+    LOOK            reduce using rule 59 (math_expression -> inc .)
+    INC             reduce using rule 59 (math_expression -> inc .)
+    DEC             reduce using rule 59 (math_expression -> inc .)
+    NOT             reduce using rule 59 (math_expression -> inc .)
+    OR              reduce using rule 59 (math_expression -> inc .)
+    LT              reduce using rule 59 (math_expression -> inc .)
+    GT              reduce using rule 59 (math_expression -> inc .)
+    NEW_LINE        reduce using rule 59 (math_expression -> inc .)
+    LEFT_BRACKET    reduce using rule 59 (math_expression -> inc .)
+
+
+state 67
+
+    (60) math_expression -> dec .
+
+    VARIABLE        reduce using rule 60 (math_expression -> dec .)
+    INT_DECIMAL     reduce using rule 60 (math_expression -> dec .)
+    TRUE            reduce using rule 60 (math_expression -> dec .)
+    FALSE           reduce using rule 60 (math_expression -> dec .)
+    STEP            reduce using rule 60 (math_expression -> dec .)
+    BACK            reduce using rule 60 (math_expression -> dec .)
+    RIGHT           reduce using rule 60 (math_expression -> dec .)
+    LEFT            reduce using rule 60 (math_expression -> dec .)
+    LOOK            reduce using rule 60 (math_expression -> dec .)
+    INC             reduce using rule 60 (math_expression -> dec .)
+    DEC             reduce using rule 60 (math_expression -> dec .)
+    NOT             reduce using rule 60 (math_expression -> dec .)
+    OR              reduce using rule 60 (math_expression -> dec .)
+    LT              reduce using rule 60 (math_expression -> dec .)
+    GT              reduce using rule 60 (math_expression -> dec .)
+    NEW_LINE        reduce using rule 60 (math_expression -> dec .)
+    LEFT_BRACKET    reduce using rule 60 (math_expression -> dec .)
+
+
+state 68
+
+    (61) math_expression -> INT_DECIMAL .
+
+    VARIABLE        reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    INT_DECIMAL     reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    TRUE            reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    FALSE           reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    STEP            reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    BACK            reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    RIGHT           reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    LEFT            reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    LOOK            reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    INC             reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    DEC             reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    NOT             reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    OR              reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    LT              reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    GT              reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    NEW_LINE        reduce using rule 61 (math_expression -> INT_DECIMAL .)
+    LEFT_BRACKET    reduce using rule 61 (math_expression -> INT_DECIMAL .)
+
+
+state 69
+
+    (26) dec -> DEC expression . expression
+    (42) expression -> . math_expression
+    (43) expression -> . VARIABLE
+    (44) expression -> . logical
+    (45) expression -> . robot_action
+    (59) math_expression -> . inc
+    (60) math_expression -> . dec
+    (61) math_expression -> . INT_DECIMAL
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+
+    VARIABLE        shift and go to state 63
+    INT_DECIMAL     shift and go to state 68
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+
+    expression                     shift and go to state 86
+    math_expression                shift and go to state 62
+    logical                        shift and go to state 64
+    robot_action                   shift and go to state 65
+    inc                            shift and go to state 66
+    dec                            shift and go to state 67
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+
+state 70
+
+    (52) not -> NOT logical .
+
+    NEW_LINE        reduce using rule 52 (not -> NOT logical .)
+    LEFT_BRACKET    reduce using rule 52 (not -> NOT logical .)
+    VARIABLE        reduce using rule 52 (not -> NOT logical .)
+    INT_DECIMAL     reduce using rule 52 (not -> NOT logical .)
+    TRUE            reduce using rule 52 (not -> NOT logical .)
+    FALSE           reduce using rule 52 (not -> NOT logical .)
+    STEP            reduce using rule 52 (not -> NOT logical .)
+    BACK            reduce using rule 52 (not -> NOT logical .)
+    RIGHT           reduce using rule 52 (not -> NOT logical .)
+    LEFT            reduce using rule 52 (not -> NOT logical .)
+    LOOK            reduce using rule 52 (not -> NOT logical .)
+    INC             reduce using rule 52 (not -> NOT logical .)
+    DEC             reduce using rule 52 (not -> NOT logical .)
+    NOT             reduce using rule 52 (not -> NOT logical .)
+    OR              reduce using rule 52 (not -> NOT logical .)
+    LT              reduce using rule 52 (not -> NOT logical .)
+    GT              reduce using rule 52 (not -> NOT logical .)
+
+
+state 71
+
+    (53) not -> NOT proc_call .
+
+    NEW_LINE        reduce using rule 53 (not -> NOT proc_call .)
+    LEFT_BRACKET    reduce using rule 53 (not -> NOT proc_call .)
+    VARIABLE        reduce using rule 53 (not -> NOT proc_call .)
+    INT_DECIMAL     reduce using rule 53 (not -> NOT proc_call .)
+    TRUE            reduce using rule 53 (not -> NOT proc_call .)
+    FALSE           reduce using rule 53 (not -> NOT proc_call .)
+    STEP            reduce using rule 53 (not -> NOT proc_call .)
+    BACK            reduce using rule 53 (not -> NOT proc_call .)
+    RIGHT           reduce using rule 53 (not -> NOT proc_call .)
+    LEFT            reduce using rule 53 (not -> NOT proc_call .)
+    LOOK            reduce using rule 53 (not -> NOT proc_call .)
+    INC             reduce using rule 53 (not -> NOT proc_call .)
+    DEC             reduce using rule 53 (not -> NOT proc_call .)
+    NOT             reduce using rule 53 (not -> NOT proc_call .)
+    OR              reduce using rule 53 (not -> NOT proc_call .)
+    LT              reduce using rule 53 (not -> NOT proc_call .)
+    GT              reduce using rule 53 (not -> NOT proc_call .)
+
+
+state 72
+
+    (32) proc_call -> VARIABLE . LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+
+    LEFT_SQUARE_BRACKET shift and go to state 56
+
+
+state 73
+
+    (54) or -> OR or_arg . or_arg
+    (55) or_arg -> . logical
+    (56) or_arg -> . proc_call
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    VARIABLE        shift and go to state 72
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+
+    or_arg                         shift and go to state 87
+    logical                        shift and go to state 74
+    proc_call                      shift and go to state 75
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+
+state 74
+
+    (55) or_arg -> logical .
+
+    TRUE            reduce using rule 55 (or_arg -> logical .)
+    FALSE           reduce using rule 55 (or_arg -> logical .)
+    VARIABLE        reduce using rule 55 (or_arg -> logical .)
+    NOT             reduce using rule 55 (or_arg -> logical .)
+    OR              reduce using rule 55 (or_arg -> logical .)
+    LT              reduce using rule 55 (or_arg -> logical .)
+    GT              reduce using rule 55 (or_arg -> logical .)
+    NEW_LINE        reduce using rule 55 (or_arg -> logical .)
+    LEFT_BRACKET    reduce using rule 55 (or_arg -> logical .)
+    INT_DECIMAL     reduce using rule 55 (or_arg -> logical .)
+    STEP            reduce using rule 55 (or_arg -> logical .)
+    BACK            reduce using rule 55 (or_arg -> logical .)
+    RIGHT           reduce using rule 55 (or_arg -> logical .)
+    LEFT            reduce using rule 55 (or_arg -> logical .)
+    LOOK            reduce using rule 55 (or_arg -> logical .)
+    INC             reduce using rule 55 (or_arg -> logical .)
+    DEC             reduce using rule 55 (or_arg -> logical .)
+
+
+state 75
+
+    (56) or_arg -> proc_call .
+
+    TRUE            reduce using rule 56 (or_arg -> proc_call .)
+    FALSE           reduce using rule 56 (or_arg -> proc_call .)
+    VARIABLE        reduce using rule 56 (or_arg -> proc_call .)
+    NOT             reduce using rule 56 (or_arg -> proc_call .)
+    OR              reduce using rule 56 (or_arg -> proc_call .)
+    LT              reduce using rule 56 (or_arg -> proc_call .)
+    GT              reduce using rule 56 (or_arg -> proc_call .)
+    NEW_LINE        reduce using rule 56 (or_arg -> proc_call .)
+    LEFT_BRACKET    reduce using rule 56 (or_arg -> proc_call .)
+    INT_DECIMAL     reduce using rule 56 (or_arg -> proc_call .)
+    STEP            reduce using rule 56 (or_arg -> proc_call .)
+    BACK            reduce using rule 56 (or_arg -> proc_call .)
+    RIGHT           reduce using rule 56 (or_arg -> proc_call .)
+    LEFT            reduce using rule 56 (or_arg -> proc_call .)
+    LOOK            reduce using rule 56 (or_arg -> proc_call .)
+    INC             reduce using rule 56 (or_arg -> proc_call .)
+    DEC             reduce using rule 56 (or_arg -> proc_call .)
+
+
+state 76
+
+    (57) lt -> LT math_expression . math_expression
+    (59) math_expression -> . inc
+    (60) math_expression -> . dec
+    (61) math_expression -> . INT_DECIMAL
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+
+    INT_DECIMAL     shift and go to state 68
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+
+    math_expression                shift and go to state 88
+    inc                            shift and go to state 66
+    dec                            shift and go to state 67
+
+state 77
+
+    (58) gt -> GT math_expression . math_expression
+    (59) math_expression -> . inc
+    (60) math_expression -> . dec
+    (61) math_expression -> . INT_DECIMAL
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+
+    INT_DECIMAL     shift and go to state 68
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+
+    math_expression                shift and go to state 89
+    inc                            shift and go to state 66
+    dec                            shift and go to state 67
+
+state 78
+
+    (14) declaration -> type VARIABLE EQUAL . expression
+    (42) expression -> . math_expression
+    (43) expression -> . VARIABLE
+    (44) expression -> . logical
+    (45) expression -> . robot_action
+    (59) math_expression -> . inc
+    (60) math_expression -> . dec
+    (61) math_expression -> . INT_DECIMAL
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+
+    VARIABLE        shift and go to state 63
+    INT_DECIMAL     shift and go to state 68
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+
+    expression                     shift and go to state 90
+    math_expression                shift and go to state 62
+    logical                        shift and go to state 64
+    robot_action                   shift and go to state 65
+    inc                            shift and go to state 66
+    dec                            shift and go to state 67
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+
+state 79
+
+    (22) assignment -> VARIABLE ASSIGN expression .
+
+    NEW_LINE        reduce using rule 22 (assignment -> VARIABLE ASSIGN expression .)
+
+
+state 80
+
+    (30) proc_args -> VARIABLE .
+
+    RIGHT_SQUARE_BRACKET reduce using rule 30 (proc_args -> VARIABLE .)
+    VARIABLE        reduce using rule 30 (proc_args -> VARIABLE .)
+
+
+state 81
+
+    (32) proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args . RIGHT_SQUARE_BRACKET
+    (31) proc_args -> proc_args . VARIABLE
+
+    RIGHT_SQUARE_BRACKET shift and go to state 92
+    VARIABLE        shift and go to state 91
+
+
+state 82
+
+    (23) if -> IF logical LEFT_BRACKET . NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> IF logical LEFT_BRACKET . NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+
+    NEW_LINE        shift and go to state 93
+
+
+state 83
+
+    (27) while -> WHILE logical NEW_LINE . DO single_sentence
+    (28) while -> WHILE logical NEW_LINE . DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+
+    DO              shift and go to state 94
+
+
+state 84
+
+    (29) proc -> PROC VARIABLE LEFT_SQUARE_BRACKET . proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (30) proc_args -> . VARIABLE
+    (31) proc_args -> . proc_args VARIABLE
+
+    VARIABLE        shift and go to state 80
+
+    proc_args                      shift and go to state 95
+
+state 85
+
+    (25) inc -> INC expression expression .
+
+    NEW_LINE        reduce using rule 25 (inc -> INC expression expression .)
+    VARIABLE        reduce using rule 25 (inc -> INC expression expression .)
+    INT_DECIMAL     reduce using rule 25 (inc -> INC expression expression .)
+    TRUE            reduce using rule 25 (inc -> INC expression expression .)
+    FALSE           reduce using rule 25 (inc -> INC expression expression .)
+    STEP            reduce using rule 25 (inc -> INC expression expression .)
+    BACK            reduce using rule 25 (inc -> INC expression expression .)
+    RIGHT           reduce using rule 25 (inc -> INC expression expression .)
+    LEFT            reduce using rule 25 (inc -> INC expression expression .)
+    LOOK            reduce using rule 25 (inc -> INC expression expression .)
+    INC             reduce using rule 25 (inc -> INC expression expression .)
+    DEC             reduce using rule 25 (inc -> INC expression expression .)
+    NOT             reduce using rule 25 (inc -> INC expression expression .)
+    OR              reduce using rule 25 (inc -> INC expression expression .)
+    LT              reduce using rule 25 (inc -> INC expression expression .)
+    GT              reduce using rule 25 (inc -> INC expression expression .)
+    LEFT_BRACKET    reduce using rule 25 (inc -> INC expression expression .)
+
+
+state 86
+
+    (26) dec -> DEC expression expression .
+
+    NEW_LINE        reduce using rule 26 (dec -> DEC expression expression .)
+    VARIABLE        reduce using rule 26 (dec -> DEC expression expression .)
+    INT_DECIMAL     reduce using rule 26 (dec -> DEC expression expression .)
+    TRUE            reduce using rule 26 (dec -> DEC expression expression .)
+    FALSE           reduce using rule 26 (dec -> DEC expression expression .)
+    STEP            reduce using rule 26 (dec -> DEC expression expression .)
+    BACK            reduce using rule 26 (dec -> DEC expression expression .)
+    RIGHT           reduce using rule 26 (dec -> DEC expression expression .)
+    LEFT            reduce using rule 26 (dec -> DEC expression expression .)
+    LOOK            reduce using rule 26 (dec -> DEC expression expression .)
+    INC             reduce using rule 26 (dec -> DEC expression expression .)
+    DEC             reduce using rule 26 (dec -> DEC expression expression .)
+    NOT             reduce using rule 26 (dec -> DEC expression expression .)
+    OR              reduce using rule 26 (dec -> DEC expression expression .)
+    LT              reduce using rule 26 (dec -> DEC expression expression .)
+    GT              reduce using rule 26 (dec -> DEC expression expression .)
+    LEFT_BRACKET    reduce using rule 26 (dec -> DEC expression expression .)
+
+
+state 87
+
+    (54) or -> OR or_arg or_arg .
+
+    NEW_LINE        reduce using rule 54 (or -> OR or_arg or_arg .)
+    LEFT_BRACKET    reduce using rule 54 (or -> OR or_arg or_arg .)
+    VARIABLE        reduce using rule 54 (or -> OR or_arg or_arg .)
+    INT_DECIMAL     reduce using rule 54 (or -> OR or_arg or_arg .)
+    TRUE            reduce using rule 54 (or -> OR or_arg or_arg .)
+    FALSE           reduce using rule 54 (or -> OR or_arg or_arg .)
+    STEP            reduce using rule 54 (or -> OR or_arg or_arg .)
+    BACK            reduce using rule 54 (or -> OR or_arg or_arg .)
+    RIGHT           reduce using rule 54 (or -> OR or_arg or_arg .)
+    LEFT            reduce using rule 54 (or -> OR or_arg or_arg .)
+    LOOK            reduce using rule 54 (or -> OR or_arg or_arg .)
+    INC             reduce using rule 54 (or -> OR or_arg or_arg .)
+    DEC             reduce using rule 54 (or -> OR or_arg or_arg .)
+    NOT             reduce using rule 54 (or -> OR or_arg or_arg .)
+    OR              reduce using rule 54 (or -> OR or_arg or_arg .)
+    LT              reduce using rule 54 (or -> OR or_arg or_arg .)
+    GT              reduce using rule 54 (or -> OR or_arg or_arg .)
+
+
+state 88
+
+    (57) lt -> LT math_expression math_expression .
+
+    NEW_LINE        reduce using rule 57 (lt -> LT math_expression math_expression .)
+    LEFT_BRACKET    reduce using rule 57 (lt -> LT math_expression math_expression .)
+    VARIABLE        reduce using rule 57 (lt -> LT math_expression math_expression .)
+    INT_DECIMAL     reduce using rule 57 (lt -> LT math_expression math_expression .)
+    TRUE            reduce using rule 57 (lt -> LT math_expression math_expression .)
+    FALSE           reduce using rule 57 (lt -> LT math_expression math_expression .)
+    STEP            reduce using rule 57 (lt -> LT math_expression math_expression .)
+    BACK            reduce using rule 57 (lt -> LT math_expression math_expression .)
+    RIGHT           reduce using rule 57 (lt -> LT math_expression math_expression .)
+    LEFT            reduce using rule 57 (lt -> LT math_expression math_expression .)
+    LOOK            reduce using rule 57 (lt -> LT math_expression math_expression .)
+    INC             reduce using rule 57 (lt -> LT math_expression math_expression .)
+    DEC             reduce using rule 57 (lt -> LT math_expression math_expression .)
+    NOT             reduce using rule 57 (lt -> LT math_expression math_expression .)
+    OR              reduce using rule 57 (lt -> LT math_expression math_expression .)
+    LT              reduce using rule 57 (lt -> LT math_expression math_expression .)
+    GT              reduce using rule 57 (lt -> LT math_expression math_expression .)
+
+
+state 89
+
+    (58) gt -> GT math_expression math_expression .
+
+    NEW_LINE        reduce using rule 58 (gt -> GT math_expression math_expression .)
+    LEFT_BRACKET    reduce using rule 58 (gt -> GT math_expression math_expression .)
+    VARIABLE        reduce using rule 58 (gt -> GT math_expression math_expression .)
+    INT_DECIMAL     reduce using rule 58 (gt -> GT math_expression math_expression .)
+    TRUE            reduce using rule 58 (gt -> GT math_expression math_expression .)
+    FALSE           reduce using rule 58 (gt -> GT math_expression math_expression .)
+    STEP            reduce using rule 58 (gt -> GT math_expression math_expression .)
+    BACK            reduce using rule 58 (gt -> GT math_expression math_expression .)
+    RIGHT           reduce using rule 58 (gt -> GT math_expression math_expression .)
+    LEFT            reduce using rule 58 (gt -> GT math_expression math_expression .)
+    LOOK            reduce using rule 58 (gt -> GT math_expression math_expression .)
+    INC             reduce using rule 58 (gt -> GT math_expression math_expression .)
+    DEC             reduce using rule 58 (gt -> GT math_expression math_expression .)
+    NOT             reduce using rule 58 (gt -> GT math_expression math_expression .)
+    OR              reduce using rule 58 (gt -> GT math_expression math_expression .)
+    LT              reduce using rule 58 (gt -> GT math_expression math_expression .)
+    GT              reduce using rule 58 (gt -> GT math_expression math_expression .)
+
+
+state 90
+
+    (14) declaration -> type VARIABLE EQUAL expression .
+
+    NEW_LINE        reduce using rule 14 (declaration -> type VARIABLE EQUAL expression .)
+
+
+state 91
+
+    (31) proc_args -> proc_args VARIABLE .
+
+    RIGHT_SQUARE_BRACKET reduce using rule 31 (proc_args -> proc_args VARIABLE .)
+    VARIABLE        reduce using rule 31 (proc_args -> proc_args VARIABLE .)
+
+
+state 92
+
+    (32) proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .
+
+    NEW_LINE        reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    LEFT_BRACKET    reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    VARIABLE        reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    INT_DECIMAL     reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    TRUE            reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    FALSE           reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    STEP            reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    BACK            reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    RIGHT           reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    LEFT            reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    LOOK            reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    INC             reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    DEC             reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    NOT             reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    OR              reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    LT              reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+    GT              reduce using rule 32 (proc_call -> VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET .)
+
+
+state 93
+
+    (23) if -> IF logical LEFT_BRACKET NEW_LINE . sentence_list RIGHT_BRACKET
+    (24) if -> IF logical LEFT_BRACKET NEW_LINE . sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (2) sentence_list -> . sentence_list single_sentence
+    (3) sentence_list -> . single_sentence
+    (4) single_sentence -> . declaration NEW_LINE
+    (5) single_sentence -> . assignment NEW_LINE
+    (6) single_sentence -> . if NEW_LINE
+    (7) single_sentence -> . while NEW_LINE
+    (8) single_sentence -> . proc NEW_LINE
+    (9) single_sentence -> . proc_call NEW_LINE
+    (10) single_sentence -> . robot_action NEW_LINE
+    (11) single_sentence -> . inc NEW_LINE
+    (12) single_sentence -> . dec NEW_LINE
+    (13) single_sentence -> . logical NEW_LINE
+    (14) declaration -> . type VARIABLE EQUAL expression
+    (15) declaration -> . MAP VARIABLE
+    (22) assignment -> . VARIABLE ASSIGN expression
+    (23) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (27) while -> . WHILE logical NEW_LINE DO single_sentence
+    (28) while -> . WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (29) proc -> . PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (16) type -> . int
+    (17) type -> . boolean
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+    (18) int -> . INT
+    (19) int -> . CINT
+    (20) boolean -> . BOOLEAN
+    (21) boolean -> . CBOOLEAN
+
+    MAP             shift and go to state 16
+    VARIABLE        shift and go to state 15
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    PROC            shift and go to state 19
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+    INT             shift and go to state 39
+    CINT            shift and go to state 40
+    BOOLEAN         shift and go to state 41
+    CBOOLEAN        shift and go to state 42
+
+    logical                        shift and go to state 13
+    sentence_list                  shift and go to state 96
+    single_sentence                shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    proc                           shift and go to state 8
+    proc_call                      shift and go to state 9
+    robot_action                   shift and go to state 10
+    inc                            shift and go to state 11
+    dec                            shift and go to state 12
+    type                           shift and go to state 14
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+    int                            shift and go to state 33
+    boolean                        shift and go to state 34
+
+state 94
+
+    (27) while -> WHILE logical NEW_LINE DO . single_sentence
+    (28) while -> WHILE logical NEW_LINE DO . LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (4) single_sentence -> . declaration NEW_LINE
+    (5) single_sentence -> . assignment NEW_LINE
+    (6) single_sentence -> . if NEW_LINE
+    (7) single_sentence -> . while NEW_LINE
+    (8) single_sentence -> . proc NEW_LINE
+    (9) single_sentence -> . proc_call NEW_LINE
+    (10) single_sentence -> . robot_action NEW_LINE
+    (11) single_sentence -> . inc NEW_LINE
+    (12) single_sentence -> . dec NEW_LINE
+    (13) single_sentence -> . logical NEW_LINE
+    (14) declaration -> . type VARIABLE EQUAL expression
+    (15) declaration -> . MAP VARIABLE
+    (22) assignment -> . VARIABLE ASSIGN expression
+    (23) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (27) while -> . WHILE logical NEW_LINE DO single_sentence
+    (28) while -> . WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (29) proc -> . PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (16) type -> . int
+    (17) type -> . boolean
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+    (18) int -> . INT
+    (19) int -> . CINT
+    (20) boolean -> . BOOLEAN
+    (21) boolean -> . CBOOLEAN
+
+    LEFT_BRACKET    shift and go to state 98
+    MAP             shift and go to state 16
+    VARIABLE        shift and go to state 15
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    PROC            shift and go to state 19
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+    INT             shift and go to state 39
+    CINT            shift and go to state 40
+    BOOLEAN         shift and go to state 41
+    CBOOLEAN        shift and go to state 42
+
+    logical                        shift and go to state 13
+    single_sentence                shift and go to state 97
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    proc                           shift and go to state 8
+    proc_call                      shift and go to state 9
+    robot_action                   shift and go to state 10
+    inc                            shift and go to state 11
+    dec                            shift and go to state 12
+    type                           shift and go to state 14
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+    int                            shift and go to state 33
+    boolean                        shift and go to state 34
+
+state 95
+
+    (29) proc -> PROC VARIABLE LEFT_SQUARE_BRACKET proc_args . RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (31) proc_args -> proc_args . VARIABLE
+
+    RIGHT_SQUARE_BRACKET shift and go to state 99
+    VARIABLE        shift and go to state 91
+
+
+state 96
+
+    (23) if -> IF logical LEFT_BRACKET NEW_LINE sentence_list . RIGHT_BRACKET
+    (24) if -> IF logical LEFT_BRACKET NEW_LINE sentence_list . RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (2) sentence_list -> sentence_list . single_sentence
+    (4) single_sentence -> . declaration NEW_LINE
+    (5) single_sentence -> . assignment NEW_LINE
+    (6) single_sentence -> . if NEW_LINE
+    (7) single_sentence -> . while NEW_LINE
+    (8) single_sentence -> . proc NEW_LINE
+    (9) single_sentence -> . proc_call NEW_LINE
+    (10) single_sentence -> . robot_action NEW_LINE
+    (11) single_sentence -> . inc NEW_LINE
+    (12) single_sentence -> . dec NEW_LINE
+    (13) single_sentence -> . logical NEW_LINE
+    (14) declaration -> . type VARIABLE EQUAL expression
+    (15) declaration -> . MAP VARIABLE
+    (22) assignment -> . VARIABLE ASSIGN expression
+    (23) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (27) while -> . WHILE logical NEW_LINE DO single_sentence
+    (28) while -> . WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (29) proc -> . PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (16) type -> . int
+    (17) type -> . boolean
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+    (18) int -> . INT
+    (19) int -> . CINT
+    (20) boolean -> . BOOLEAN
+    (21) boolean -> . CBOOLEAN
+
+    RIGHT_BRACKET   shift and go to state 100
+    MAP             shift and go to state 16
+    VARIABLE        shift and go to state 15
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    PROC            shift and go to state 19
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+    INT             shift and go to state 39
+    CINT            shift and go to state 40
+    BOOLEAN         shift and go to state 41
+    CBOOLEAN        shift and go to state 42
+
+    logical                        shift and go to state 13
+    single_sentence                shift and go to state 43
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    proc                           shift and go to state 8
+    proc_call                      shift and go to state 9
+    robot_action                   shift and go to state 10
+    inc                            shift and go to state 11
+    dec                            shift and go to state 12
+    type                           shift and go to state 14
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+    int                            shift and go to state 33
+    boolean                        shift and go to state 34
+
+state 97
+
+    (27) while -> WHILE logical NEW_LINE DO single_sentence .
+
+    NEW_LINE        reduce using rule 27 (while -> WHILE logical NEW_LINE DO single_sentence .)
+
+
+state 98
+
+    (28) while -> WHILE logical NEW_LINE DO LEFT_BRACKET . NEW_LINE sentence_list RIGHT_BRACKET
+
+    NEW_LINE        shift and go to state 101
+
+
+state 99
+
+    (29) proc -> PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET . LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+
+    LEFT_BRACKET    shift and go to state 102
+
+
+state 100
+
+    (23) if -> IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET .
+    (24) if -> IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET . ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+
+    NEW_LINE        reduce using rule 23 (if -> IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET .)
+    ELSE            shift and go to state 103
+
+
+state 101
+
+    (28) while -> WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE . sentence_list RIGHT_BRACKET
+    (2) sentence_list -> . sentence_list single_sentence
+    (3) sentence_list -> . single_sentence
+    (4) single_sentence -> . declaration NEW_LINE
+    (5) single_sentence -> . assignment NEW_LINE
+    (6) single_sentence -> . if NEW_LINE
+    (7) single_sentence -> . while NEW_LINE
+    (8) single_sentence -> . proc NEW_LINE
+    (9) single_sentence -> . proc_call NEW_LINE
+    (10) single_sentence -> . robot_action NEW_LINE
+    (11) single_sentence -> . inc NEW_LINE
+    (12) single_sentence -> . dec NEW_LINE
+    (13) single_sentence -> . logical NEW_LINE
+    (14) declaration -> . type VARIABLE EQUAL expression
+    (15) declaration -> . MAP VARIABLE
+    (22) assignment -> . VARIABLE ASSIGN expression
+    (23) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (27) while -> . WHILE logical NEW_LINE DO single_sentence
+    (28) while -> . WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (29) proc -> . PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (16) type -> . int
+    (17) type -> . boolean
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+    (18) int -> . INT
+    (19) int -> . CINT
+    (20) boolean -> . BOOLEAN
+    (21) boolean -> . CBOOLEAN
+
+    MAP             shift and go to state 16
+    VARIABLE        shift and go to state 15
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    PROC            shift and go to state 19
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+    INT             shift and go to state 39
+    CINT            shift and go to state 40
+    BOOLEAN         shift and go to state 41
+    CBOOLEAN        shift and go to state 42
+
+    logical                        shift and go to state 13
+    sentence_list                  shift and go to state 104
+    single_sentence                shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    proc                           shift and go to state 8
+    proc_call                      shift and go to state 9
+    robot_action                   shift and go to state 10
+    inc                            shift and go to state 11
+    dec                            shift and go to state 12
+    type                           shift and go to state 14
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+    int                            shift and go to state 33
+    boolean                        shift and go to state 34
+
+state 102
+
+    (29) proc -> PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET . NEW_LINE sentence_list RIGHT_BRACKET
+
+    NEW_LINE        shift and go to state 105
+
+
+state 103
+
+    (24) if -> IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE . LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+
+    LEFT_BRACKET    shift and go to state 106
+
+
+state 104
+
+    (28) while -> WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list . RIGHT_BRACKET
+    (2) sentence_list -> sentence_list . single_sentence
+    (4) single_sentence -> . declaration NEW_LINE
+    (5) single_sentence -> . assignment NEW_LINE
+    (6) single_sentence -> . if NEW_LINE
+    (7) single_sentence -> . while NEW_LINE
+    (8) single_sentence -> . proc NEW_LINE
+    (9) single_sentence -> . proc_call NEW_LINE
+    (10) single_sentence -> . robot_action NEW_LINE
+    (11) single_sentence -> . inc NEW_LINE
+    (12) single_sentence -> . dec NEW_LINE
+    (13) single_sentence -> . logical NEW_LINE
+    (14) declaration -> . type VARIABLE EQUAL expression
+    (15) declaration -> . MAP VARIABLE
+    (22) assignment -> . VARIABLE ASSIGN expression
+    (23) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (27) while -> . WHILE logical NEW_LINE DO single_sentence
+    (28) while -> . WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (29) proc -> . PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (16) type -> . int
+    (17) type -> . boolean
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+    (18) int -> . INT
+    (19) int -> . CINT
+    (20) boolean -> . BOOLEAN
+    (21) boolean -> . CBOOLEAN
+
+    RIGHT_BRACKET   shift and go to state 107
+    MAP             shift and go to state 16
+    VARIABLE        shift and go to state 15
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    PROC            shift and go to state 19
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+    INT             shift and go to state 39
+    CINT            shift and go to state 40
+    BOOLEAN         shift and go to state 41
+    CBOOLEAN        shift and go to state 42
+
+    logical                        shift and go to state 13
+    single_sentence                shift and go to state 43
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    proc                           shift and go to state 8
+    proc_call                      shift and go to state 9
+    robot_action                   shift and go to state 10
+    inc                            shift and go to state 11
+    dec                            shift and go to state 12
+    type                           shift and go to state 14
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+    int                            shift and go to state 33
+    boolean                        shift and go to state 34
+
+state 105
+
+    (29) proc -> PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE . sentence_list RIGHT_BRACKET
+    (2) sentence_list -> . sentence_list single_sentence
+    (3) sentence_list -> . single_sentence
+    (4) single_sentence -> . declaration NEW_LINE
+    (5) single_sentence -> . assignment NEW_LINE
+    (6) single_sentence -> . if NEW_LINE
+    (7) single_sentence -> . while NEW_LINE
+    (8) single_sentence -> . proc NEW_LINE
+    (9) single_sentence -> . proc_call NEW_LINE
+    (10) single_sentence -> . robot_action NEW_LINE
+    (11) single_sentence -> . inc NEW_LINE
+    (12) single_sentence -> . dec NEW_LINE
+    (13) single_sentence -> . logical NEW_LINE
+    (14) declaration -> . type VARIABLE EQUAL expression
+    (15) declaration -> . MAP VARIABLE
+    (22) assignment -> . VARIABLE ASSIGN expression
+    (23) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (27) while -> . WHILE logical NEW_LINE DO single_sentence
+    (28) while -> . WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (29) proc -> . PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (16) type -> . int
+    (17) type -> . boolean
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+    (18) int -> . INT
+    (19) int -> . CINT
+    (20) boolean -> . BOOLEAN
+    (21) boolean -> . CBOOLEAN
+
+    MAP             shift and go to state 16
+    VARIABLE        shift and go to state 15
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    PROC            shift and go to state 19
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+    INT             shift and go to state 39
+    CINT            shift and go to state 40
+    BOOLEAN         shift and go to state 41
+    CBOOLEAN        shift and go to state 42
+
+    sentence_list                  shift and go to state 108
+    single_sentence                shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    proc                           shift and go to state 8
+    proc_call                      shift and go to state 9
+    robot_action                   shift and go to state 10
+    inc                            shift and go to state 11
+    dec                            shift and go to state 12
+    logical                        shift and go to state 13
+    type                           shift and go to state 14
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+    int                            shift and go to state 33
+    boolean                        shift and go to state 34
+
+state 106
+
+    (24) if -> IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET . NEW_LINE sentence_list RIGHT_BRACKET
+
+    NEW_LINE        shift and go to state 109
+
+
+state 107
+
+    (28) while -> WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET .
+
+    NEW_LINE        reduce using rule 28 (while -> WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET .)
+
+
+state 108
+
+    (29) proc -> PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list . RIGHT_BRACKET
+    (2) sentence_list -> sentence_list . single_sentence
+    (4) single_sentence -> . declaration NEW_LINE
+    (5) single_sentence -> . assignment NEW_LINE
+    (6) single_sentence -> . if NEW_LINE
+    (7) single_sentence -> . while NEW_LINE
+    (8) single_sentence -> . proc NEW_LINE
+    (9) single_sentence -> . proc_call NEW_LINE
+    (10) single_sentence -> . robot_action NEW_LINE
+    (11) single_sentence -> . inc NEW_LINE
+    (12) single_sentence -> . dec NEW_LINE
+    (13) single_sentence -> . logical NEW_LINE
+    (14) declaration -> . type VARIABLE EQUAL expression
+    (15) declaration -> . MAP VARIABLE
+    (22) assignment -> . VARIABLE ASSIGN expression
+    (23) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (27) while -> . WHILE logical NEW_LINE DO single_sentence
+    (28) while -> . WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (29) proc -> . PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (16) type -> . int
+    (17) type -> . boolean
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+    (18) int -> . INT
+    (19) int -> . CINT
+    (20) boolean -> . BOOLEAN
+    (21) boolean -> . CBOOLEAN
+
+    RIGHT_BRACKET   shift and go to state 110
+    MAP             shift and go to state 16
+    VARIABLE        shift and go to state 15
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    PROC            shift and go to state 19
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+    INT             shift and go to state 39
+    CINT            shift and go to state 40
+    BOOLEAN         shift and go to state 41
+    CBOOLEAN        shift and go to state 42
+
+    single_sentence                shift and go to state 43
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    proc                           shift and go to state 8
+    proc_call                      shift and go to state 9
+    robot_action                   shift and go to state 10
+    inc                            shift and go to state 11
+    dec                            shift and go to state 12
+    logical                        shift and go to state 13
+    type                           shift and go to state 14
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+    int                            shift and go to state 33
+    boolean                        shift and go to state 34
+
+state 109
+
+    (24) if -> IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE . sentence_list RIGHT_BRACKET
+    (2) sentence_list -> . sentence_list single_sentence
+    (3) sentence_list -> . single_sentence
+    (4) single_sentence -> . declaration NEW_LINE
+    (5) single_sentence -> . assignment NEW_LINE
+    (6) single_sentence -> . if NEW_LINE
+    (7) single_sentence -> . while NEW_LINE
+    (8) single_sentence -> . proc NEW_LINE
+    (9) single_sentence -> . proc_call NEW_LINE
+    (10) single_sentence -> . robot_action NEW_LINE
+    (11) single_sentence -> . inc NEW_LINE
+    (12) single_sentence -> . dec NEW_LINE
+    (13) single_sentence -> . logical NEW_LINE
+    (14) declaration -> . type VARIABLE EQUAL expression
+    (15) declaration -> . MAP VARIABLE
+    (22) assignment -> . VARIABLE ASSIGN expression
+    (23) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (27) while -> . WHILE logical NEW_LINE DO single_sentence
+    (28) while -> . WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (29) proc -> . PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (16) type -> . int
+    (17) type -> . boolean
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+    (18) int -> . INT
+    (19) int -> . CINT
+    (20) boolean -> . BOOLEAN
+    (21) boolean -> . CBOOLEAN
+
+    MAP             shift and go to state 16
+    VARIABLE        shift and go to state 15
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    PROC            shift and go to state 19
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+    INT             shift and go to state 39
+    CINT            shift and go to state 40
+    BOOLEAN         shift and go to state 41
+    CBOOLEAN        shift and go to state 42
+
+    logical                        shift and go to state 13
+    sentence_list                  shift and go to state 111
+    single_sentence                shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    proc                           shift and go to state 8
+    proc_call                      shift and go to state 9
+    robot_action                   shift and go to state 10
+    inc                            shift and go to state 11
+    dec                            shift and go to state 12
+    type                           shift and go to state 14
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+    int                            shift and go to state 33
+    boolean                        shift and go to state 34
+
+state 110
+
+    (29) proc -> PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET .
+
+    NEW_LINE        reduce using rule 29 (proc -> PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET .)
+
+
+state 111
+
+    (24) if -> IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list . RIGHT_BRACKET
+    (2) sentence_list -> sentence_list . single_sentence
+    (4) single_sentence -> . declaration NEW_LINE
+    (5) single_sentence -> . assignment NEW_LINE
+    (6) single_sentence -> . if NEW_LINE
+    (7) single_sentence -> . while NEW_LINE
+    (8) single_sentence -> . proc NEW_LINE
+    (9) single_sentence -> . proc_call NEW_LINE
+    (10) single_sentence -> . robot_action NEW_LINE
+    (11) single_sentence -> . inc NEW_LINE
+    (12) single_sentence -> . dec NEW_LINE
+    (13) single_sentence -> . logical NEW_LINE
+    (14) declaration -> . type VARIABLE EQUAL expression
+    (15) declaration -> . MAP VARIABLE
+    (22) assignment -> . VARIABLE ASSIGN expression
+    (23) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (24) if -> . IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (27) while -> . WHILE logical NEW_LINE DO single_sentence
+    (28) while -> . WHILE logical NEW_LINE DO LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (29) proc -> . PROC VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET
+    (32) proc_call -> . VARIABLE LEFT_SQUARE_BRACKET proc_args RIGHT_SQUARE_BRACKET
+    (33) robot_action -> . STEP
+    (34) robot_action -> . BACK
+    (35) robot_action -> . RIGHT
+    (36) robot_action -> . LEFT
+    (37) robot_action -> . LOOK
+    (25) inc -> . INC expression expression
+    (26) dec -> . DEC expression expression
+    (46) logical -> . not
+    (47) logical -> . or
+    (48) logical -> . lt
+    (49) logical -> . gt
+    (50) logical -> . TRUE
+    (51) logical -> . FALSE
+    (16) type -> . int
+    (17) type -> . boolean
+    (52) not -> . NOT logical
+    (53) not -> . NOT proc_call
+    (54) or -> . OR or_arg or_arg
+    (57) lt -> . LT math_expression math_expression
+    (58) gt -> . GT math_expression math_expression
+    (18) int -> . INT
+    (19) int -> . CINT
+    (20) boolean -> . BOOLEAN
+    (21) boolean -> . CBOOLEAN
+
+    RIGHT_BRACKET   shift and go to state 112
+    MAP             shift and go to state 16
+    VARIABLE        shift and go to state 15
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    PROC            shift and go to state 19
+    STEP            shift and go to state 20
+    BACK            shift and go to state 21
+    RIGHT           shift and go to state 22
+    LEFT            shift and go to state 23
+    LOOK            shift and go to state 24
+    INC             shift and go to state 25
+    DEC             shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NOT             shift and go to state 35
+    OR              shift and go to state 36
+    LT              shift and go to state 37
+    GT              shift and go to state 38
+    INT             shift and go to state 39
+    CINT            shift and go to state 40
+    BOOLEAN         shift and go to state 41
+    CBOOLEAN        shift and go to state 42
+
+    logical                        shift and go to state 13
+    single_sentence                shift and go to state 43
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    proc                           shift and go to state 8
+    proc_call                      shift and go to state 9
+    robot_action                   shift and go to state 10
+    inc                            shift and go to state 11
+    dec                            shift and go to state 12
+    type                           shift and go to state 14
+    not                            shift and go to state 27
+    or                             shift and go to state 28
+    lt                             shift and go to state 29
+    gt                             shift and go to state 30
+    int                            shift and go to state 33
+    boolean                        shift and go to state 34
+
+state 112
+
+    (24) if -> IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET .
+
+    NEW_LINE        reduce using rule 24 (if -> IF logical LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET ELSE LEFT_BRACKET NEW_LINE sentence_list RIGHT_BRACKET .)
+

@@ -1,0 +1,60 @@
+int b = 10
+b := 3
+boolean flag = true
+flag := false
+cint a = 100
+cboolean flag1 = true
+int c = inc 5 2
+c := inc 5 true
+c := inc 5 false
+c := inc 5 inc 3 2
+int c = dec 5 2
+c := dec 5 true
+c := dec 5 false
+c := dec 5 dec 3 2
+not true
+not or true false
+or true or true false
+gt dec 3 tRue inc 2 false
+lt 500 100
+flag := not or true false
+boolean flag = not or true false
+cboolean flag = not or true false
+if false (
+    c := 5
+)
+
+
+
+if false (
+    c := inc 7 not false
+    c := inc 7 not false
+    c := inc 7 not false
+    )
+
+
+
+if not or true false (
+    c := inc 7 not false
+    c := inc 7 not false
+) else (
+    c := inc 7 not false
+    c := inc 7 not false
+    c := inc 7 not false
+)
+
+a := 5
+
+while true
+do (
+    c := 5
+)
+
+proc sum [a b c] (
+    inc a 5
+    dec 5 3
+)
+
+sum [a b c]
+
+
